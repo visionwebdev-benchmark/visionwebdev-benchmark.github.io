@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> MotionBench </title>
+
+    <link rel="icon" href="./static/images/lvbench.jpg">
+
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+    <link rel="stylesheet" href="./static/css/bulma.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="./static/css/index.css">
+    <link rel="stylesheet" href="./static/css/leaderboard.css">
+    <link rel="stylesheet" href="./static/css/video-player.css">
+
+
+    <script type="text/javascript" src="static/js/sort-table.js" defer></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="./static/js/bulma-carousel.min.js"></script>
+    <script src="./static/js/bulma-slider.min.js"></script>
+    <script src="./static/js/explorer-index.js"></script>
+    <script src="./static/js/question_card.js"></script>
+
+    <style>
+        .no-sort {
+            cursor: default;
+            pointer-events: none;
+            background-image: none !important; /* Remove the sort arrow */
+        }
+    </style>
+</head>
+<body>
+
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+    </div>
+    <div class="navbar-menu">
+        <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+
+            <div class="navbar-item has-dropdown is-hoverable">
+                <p style="font-size:18px; display: inline; margin-right: -2px; margin-top: 12px;">🔥</p>
+                <a class="navbar-link">
+                    More Research
+                </a>
+                <div class="navbar-dropdown">
+                    <a class="navbar-item" href="https://github.com/THUDM/CogVLM2">
+                        <b>CogVLM2</b>
+                    </a>
+                    <a class="navbar-item" href="https://lvbench.github.io/">
+                        <b>LVBench</b>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</nav>
+
+
+<section class="hero">
+    <div class="hero-body">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered">
+                <div class="column has-text-centered">
+                    <h1 class="title is-1 publication-title is-bold">
+                        <img src="static/images/motion-bench.png" style="width:1.6em;vertical-align: middle"
+                             alt="Logo"/>
+                        <span class="video-mme" style="vertical-align: middle">MotionBench</span>
+                    </h1>
+                    <h2 class="subtitle is-3 publication-subtitle" , style="margin-bottom: 20px;">
+                        Benchmarking and Improving Fine-grained Video Motion Understanding for Vision Language Models
+                    </h2>
+
+                    <div class="is-size-5 publication-authors" , style="width: 80%; margin: 20px auto;" ,>
+
+                        <span class="author-block" , style="font-size:24px"><a
+                                href="https://github.com/THUDM/MotionBench">MotionBench Team</a></span>
+
+                    </div>
+
+                    <div class="is-size-5 publication-authors">
+
+                    </div>
+
+                    <div class="column has-text-centered">
+                        <div class="publication-links">
+                            <!-- PDF Link. -->
+                            <span class="link-block">
+                <a href="https://arxiv.org/abs/2501.02955"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+                            <!-- Code Link. -->
+                            <span class="link-block">
+                <a href="https://github.com/THUDM/MotionBench"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+                            <!-- Dataset Link. -->
+                            <span class="link-block">
+                <a href="https://huggingface.co/datasets/THUDM/MotionBench"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <!-- <i class="far fa-images"></i> -->
+                      <p style="font-size:18px">📊</p>
+                  </span>
+                  <span>Dataset</span>
+                </a>
+              </span>
+                            <!-- Leaderboard Link. -->
+                            <span class="link-block">
+                <a href="#leaderboard"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <p style="font-size:18px">🏆</p>
+                  </span>
+                  <span>Leaderboard</span>
+                </a>
+                                <a href="https://huggingface.co/spaces/THUDM/MotionBench"
+                                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <p style="font-size:18px">🏆</p>
+                  </span>
+                  <span>HuggingFace Leaderboard</span>
+                </a>
+              </span>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="section">
+    <div class="container" style="margin-bottom: 2vh;">
+        <!-- Abstract. -->
+        <div class="columns is-centered has-text-centered">
+            <div class="column is-four-fifths">
+                <h2 class="title is-3">Introduction</h2>
+                <div class="content has-text-justified">
+                    In recent years, vision language models (VLMs) have made significant advancements in video
+                    understanding. However, a crucial capability — fine-grained motion comprehension — remains
+                    under-explored in current benchmarks. To address this gap, we propose MotionBench, a comprehensive
+                    evaluation benchmark designed to assess the fine-grained motion comprehension of video understanding
+                    models. MotionBench evaluates models' motion-level perception through six primary categories of
+                    motion-oriented question types and includes data collected from diverse sources, ensuring a broad
+                    representation of real-world video content. Experimental results reveal that existing VLMs perform
+                    poorly in understanding fine-grained motions.
+                    To enhance VLM's ability to perceive fine-grained motion within a limited sequence length of LLM, we
+                    conduct extensive experiments reviewing VLM architectures optimized for video feature compression
+                    and propose a novel and efficient Through-Encoder (TE) Fusion method. Experiments show that higher
+                    frame rate inputs and TE Fusion yield improvements in motion
+                    understanding, yet there is still substantial room for enhancement. Our benchmark aims to guide and
+                    motivate the development of more capable video understanding models,
+                    emphasizing the importance of fine-grained motion comprehension.
+                </div>
+            </div>
+        </div>
+        <!--/ Abstract. -->
+    </div>
+</section>
+
+<!--leader board-->
+<section class="section">
+    <div class="container">
+
+        <div class="columns is-centered">
+            <div class="column is-full has-text-centered content">
+
+                <h2 class="title is-3" id="leaderboard">Leaderboard</h2>
+                <div class="content">
+                    <p class="mt-3">Accuracy scores on MotionBench.
+                    </p>
+
+                    <table class="js-sort-table" id="results">
+                        <thead>
+
+
+                        <tr>
+                            <th rowspan="2" class="no-sort" style="vertical-align: middle;"><strong>#</strong></th>
+                            <th rowspan="2" class="no-sort" style="vertical-align: middle;"><strong>Model</strong></th>
+                            <th rowspan="2" class="no-sort" style="vertical-align: middle;"><strong>Frames</strong></th>
+                            <th rowspan="2" style="vertical-align: middle;"><strong>LLM <br>Params</strong></th>
+                            <th rowspan="2" style="vertical-align: middle;"><strong>Date</strong></th>
+                            <th rowspan="2" style="vertical-align: middle;"><strong>Dev Avg (%)</strong></th>
+                            <th rowspan="2" style="vertical-align: middle;"><strong>Test Avg (%)</strong></th>
+                            <th rowspan="2" style="vertical-align: middle;"><strong>MR (%)</strong></th>
+                            <th rowspan="2" style="vertical-align: middle;"><strong>LM (%)</strong></th>
+                            <th rowspan="2" style="vertical-align: middle;"><strong>CM (%)</strong></th>
+                            <th rowspan="2" style="vertical-align: middle;"><strong>MO (%)</strong></th>
+                            <th rowspan="2" style="vertical-align: middle;"><strong>AO (%)</strong></th>
+                            <th rowspan="2" style="vertical-align: middle;"><strong>RC (%)</strong></th>
+                        </tr>
+
+                        </thead>
+                        <tbody>
+
+                        <tr>
+                            <td style="vertical-align: middle;"></td>
+                            <td style="vertical-align: middle;"><b class=""><a href="https://blog.google/technology/developers/gemini-3-pro-vision/">Gemini-3-Pro-Preview</a>
+                            <p style="font-size: 12px; margin-left: 5px; color: #858383;">Google</p></b></td>
+                            <td style="vertical-align: middle;">-</td>
+                            <td style="vertical-align: middle;">-</td>
+                            <td style="vertical-align: middle;">2025-12-5</td>
+                            <td style="vertical-align: middle;"><b class="">69.9</b></td>
+                            <td style="vertical-align: middle;"><b class="">70.4</b></td>
+                            <td style="vertical-align: middle;">70.9</td>
+                            <td style="vertical-align: middle;">73.9</td>
+                            <td style="vertical-align: middle;">66.7</td>
+                            <td style="vertical-align: middle;">83.4</td>
+                            <td style="vertical-align: middle;">55.0</td>
+                            <td style="vertical-align: middle;">61.2</td>
+                        </tr>
+                        <tr>
+                            <td style="vertical-align: middle;"></td>
+                            <td style="vertical-align: middle;"><b class=""><a href="https://blog.google/technology/google-deepmind/gemini-model-thinking-updates-march-2025/">Gemini-2.5-Pro</a>
+                            <p style="font-size: 12px; margin-left: 5px; color: #858383;">Google</p></b></td>
+                            <td style="vertical-align: middle;">-</td>
+                            <td style="vertical-align: middle;">-</td>
+                            <td style="vertical-align: middle;">2025-3-25</td>
+                            <td style="vertical-align: middle;"><b class="">65.8</b></td>
+                            <td style="vertical-align: middle;"><b class="">66.3</b></td>
+                            <td style="vertical-align: middle;">67.0</td>
+                            <td style="vertical-align: middle;">67.5</td>
+                            <td style="vertical-align: middle;">65.6</td>
+                            <td style="vertical-align: middle;">77.5</td>
+                            <td style="vertical-align: middle;">53.9</td>
+                            <td style="vertical-align: middle;">57.0</td>
+                        </tr>
+                        <tr>
+                            <td style="vertical-align: middle;"></td>
+                            <td style="vertical-align: middle;"><b class=""><a href="https://openai.com/index/gpt-5-1/">GPT-5.1</a>
+                            <p style="font-size: 12px; margin-left: 5px; color: #858383;">OpenAI</p></b></td>
+                            <td style="vertical-align: middle;">-</td>
+                            <td style="vertical-align: middle;">-</td>
+                            <td style="vertical-align: middle;">2025-11-12</td>
+                            <td style="vertical-align: middle;"><b class="">66.2</b></td>
+                            <td style="vertical-align: middle;"><b class="">66.2</b></td>
+                            <td style="vertical-align: middle;">69.6</td>
+                            <td style="vertical-align: middle;">68.8</td>
+                            <td style="vertical-align: middle;">53.6</td>
+                            <td style="vertical-align: middle;">76.6</td>
+                            <td style="vertical-align: middle;">54.6</td>
+                            <td style="vertical-align: middle;">56.7</td>
+                        </tr>
+                        <tr>
+                            <td style="vertical-align: middle;"></td>
+                            <td style="vertical-align: middle;"><b class=""><a href="https://www.anthropic.com/news/claude-opus-4-5">Claude-Opus-4.5</a>
+                            <p style="font-size: 12px; margin-left: 5px; color: #858383;">Anthropic</p></b></td>
+                            <td style="vertical-align: middle;">-</td>
+                            <td style="vertical-align: middle;">-</td>
+                            <td style="vertical-align: middle;">2025-11-25</td>
+                            <td style="vertical-align: middle;"><b class=""> - </b></td>
+                            <td style="vertical-align: middle;"><b class="">65.9</b></td>
+                            <td style="vertical-align: middle;">66.5</td>
+                            <td style="vertical-align: middle;">71.0</td>
+                            <td style="vertical-align: middle;">71.0</td>
+                            <td style="vertical-align: middle;">79.7</td>
+                            <td style="vertical-align: middle;">55.0</td>
+                            <td style="vertical-align: middle;">36.9</td>
+                        </tr>
+
+                        <tr>
+                            <td style="vertical-align: middle;"></td>
+                            <td style="vertical-align: middle;"><b class=""><a href="https://github.com/zai-org/GLM-V">GLM-4.5V</a>
+                            <p style="font-size: 12px; margin-left: 5px; color: #858383;">Z.ai</p></b></td>
+                            <td style="vertical-align: middle;">2fps</td>
+                            <td style="vertical-align: middle;">106B(A12B)</td>
+                            <td style="vertical-align: middle;">2025-8-27</td>
+                            <td style="vertical-align: middle;"><b class="">61.42</b></td>
+                            <td style="vertical-align: middle;"><b class="">62.39</b></td>
+                            <td style="vertical-align: middle;">65.08</td>
+                            <td style="vertical-align: middle;">65.16</td>
+                            <td style="vertical-align: middle;">58.72</td>
+                            <td style="vertical-align: middle;">77.38</td>
+                            <td style="vertical-align: middle;">48.34</td>
+                            <td style="vertical-align: middle;">40.37</td>
+                        </tr>
+
+
+                        <tr>
+                            <td style="vertical-align: middle;"></td>
+                            <td style="vertical-align: middle;"><b class=""><a href="https://www.anthropic.com/news/claude-sonnet-4-5">Claude-Sonnet-4.5</a>
+                            <p style="font-size: 12px; margin-left: 5px; color: #858383;">Anthropic</p></b></td>
+                            <td style="vertical-align: middle;">-</td>
+                            <td style="vertical-align: middle;">-</td>
+                            <td style="vertical-align: middle;">2025-9-30</td>
+                            <td style="vertical-align: middle;"><b class=""> - </b></td>
+                            <td style="vertical-align: middle;"><b class="">61.1</b></td>
+                            <td style="vertical-align: middle;">63.2</td>
+                            <td style="vertical-align: middle;">66.5</td>
+                            <td style="vertical-align: middle;">59.2</td>
+                            <td style="vertical-align: middle;">74.3</td>
+                            <td style="vertical-align: middle;">54.4</td>
+                            <td style="vertical-align: middle;">29.4</td>
+                        </tr>
+
+                        <tr>
+                            <td style="vertical-align: middle;"></td>
+                            <td style="vertical-align: middle;"><b class=""><a href="https://github.com/ByteDance-Seed/Seed1.5-VL">Seed1.5-VL</a>
+                            <p style="font-size: 12px; margin-left: 5px; color: #858383;">ByteDance</p></b></td>
+                            <td style="vertical-align: middle;">2fps</td>
+                            <td style="vertical-align: middle;">-</td>
+                            <td style="vertical-align: middle;">2025-8-27</td>
+                            <td style="vertical-align: middle;"><b class="">58.81</b></td>
+                            <td style="vertical-align: middle;"><b class="">59.44</b></td>
+                            <td style="vertical-align: middle;">61.37</td>
+                            <td style="vertical-align: middle;">66.67</td>
+                            <td style="vertical-align: middle;">58.61</td>
+                            <td style="vertical-align: middle;">73.79</td>
+                            <td style="vertical-align: middle;">49.38</td>
+                            <td style="vertical-align: middle;">26.74</td>
+                        </tr>
+                        
+                        <tr>
+                            <td style="vertical-align: middle;"></td>
+                            <td style="vertical-align: middle;"><b class=""><a href="https://openai.com/zh-Hant/index/introducing-gpt-5/">gpt-5-chat</a>
+                            <p style="font-size: 12px; margin-left: 5px; color: #858383;">OpenAI</p></b></td>
+                            <td style="vertical-align: middle;">2fps</td>
+                            <td style="vertical-align: middle;">-</td>
+                            <td style="vertical-align: middle;">2025-8-27</td>
+                            <td style="vertical-align: middle;"><b class="">58.81</b></td>
+                            <td style="vertical-align: middle;"><b class="">59.44</b></td>
+                            <td style="vertical-align: middle;">61.37</td>
+                            <td style="vertical-align: middle;">66.67</td>
+                            <td style="vertical-align: middle;">58.61</td>
+                            <td style="vertical-align: middle;">73.79</td>
+                            <td style="vertical-align: middle;">49.38</td>
+                            <td style="vertical-align: middle;">26.74</td>
+                        </tr>
+
+                        <tr>
+                            <td style="vertical-align: middle;"></td>
+                            <td style="vertical-align: middle;"><b class=""><a href="https://github.com/zai-org/GLM-V">GLM-4.1V-Thinking</a>
+                            <p style="font-size: 12px; margin-left: 5px; color: #858383;">Z.ai</p></b></td>
+                            <td style="vertical-align: middle;">2fps</td>
+                            <td style="vertical-align: middle;">9B</td>
+                            <td style="vertical-align: middle;">2025-8-27</td>
+                            <td style="vertical-align: middle;"><b class="">58.68</b></td>
+                            <td style="vertical-align: middle;"><b class="">59.44</b></td>
+                            <td style="vertical-align: middle;">62.48</td>
+                            <td style="vertical-align: middle;">62.98</td>
+                            <td style="vertical-align: middle;">53.85</td>
+                            <td style="vertical-align: middle;">76.18</td>
+                            <td style="vertical-align: middle;">46.23</td>
+                            <td style="vertical-align: middle;">33.51</td>
+                        </tr>
+                        
+                        <tr>
+                            <td style="vertical-align: middle;"></td>
+                            <td style="vertical-align: middle;"><b class=""><a href="https://cloud.google.com/vertex-ai/generative-ai/docs/models/gemini/2-5-flash">gemini-2.5-flash</a>
+                            <p style="font-size: 12px; margin-left: 5px; color: #858383;">Google</p></b></td>
+                            <td style="vertical-align: middle;">2fps</td>
+                            <td style="vertical-align: middle;">-</td>
+                            <td style="vertical-align: middle;">2025-8-27</td>
+                            <td style="vertical-align: middle;"><b class="">56.12</b></td>
+                            <td style="vertical-align: middle;"><b class="">57.21</b></td>
+                            <td style="vertical-align: middle;">59.25</td>
+                            <td style="vertical-align: middle;">59.97</td>
+                            <td style="vertical-align: middle;">59.9</td>
+                            <td style="vertical-align: middle;">72.55</td>
+                            <td style="vertical-align: middle;">44.4</td>
+                            <td style="vertical-align: middle;">29.14</td>
+                        </tr>
+                        
+                        <tr>
+                            <td style="vertical-align: middle;"></td>
+                            <td style="vertical-align: middle;"><b class=""><a href="https://github.com/QwenLM/Qwen2.5-VL">Qwen2.5-VL-72B</a>
+                            <p style="font-size: 12px; margin-left: 5px; color: #858383;">Alibaba</p></b></td>
+                            <td style="vertical-align: middle;">64</td>
+                            <td style="vertical-align: middle;">72B</td>
+                            <td style="vertical-align: middle;">2025-8-27</td>
+                            <td style="vertical-align: middle;"><b class="">56.14</b></td>
+                            <td style="vertical-align: middle;"><b class="">56.1</b></td>
+                            <td style="vertical-align: middle;">59.48</td>
+                            <td style="vertical-align: middle;">58.96</td>
+                            <td style="vertical-align: middle;">47.95</td>
+                            <td style="vertical-align: middle;">72.89</td>
+                            <td style="vertical-align: middle;">45.53</td>
+                            <td style="vertical-align: middle;">28.73</td>
+                        </tr>
+                        <tr>
+                            <td style="vertical-align: middle;"></td>
+                            <td style="vertical-align: middle;"><b class=""><a href="https://github.com/MoonshotAI/Kimi-VL">Kimi-VL-2506</a>
+                            <p style="font-size: 12px; margin-left: 5px; color: #858383;">Kimi</p></b></td>
+                            <td style="vertical-align: middle;">2fps</td>
+                            <td style="vertical-align: middle;">16B (A3B)</td>
+                            <td style="vertical-align: middle;">2025-8-27</td>
+                            <td style="vertical-align: middle;"><b class="">54.6</b></td>
+                            <td style="vertical-align: middle;"><b class="">54.26</b></td>
+                            <td style="vertical-align: middle;">58.7</td>
+                            <td style="vertical-align: middle;">55.78</td>
+                            <td style="vertical-align: middle;">45.64</td>
+                            <td style="vertical-align: middle;">73.48</td>
+                            <td style="vertical-align: middle;">42.08</td>
+                            <td style="vertical-align: middle;">22.52</td>
+                        </tr>
+
+
+
+                        <tr>
+                            <td style="vertical-align: middle;"></td>
+                            <td style="vertical-align: middle;"><b class=""><a
+                                    href="https://bigmodel.cn/dev/howuse/glm-4v"
+                                    class="ext-link" style="font-size: 16px;">GLM-4V-Plus-0111
+                                <p style="font-size: 12px; margin-left: 5px; color: #858383;">Z.ai</p>
+                            </a></b></td>
+                            <td style="vertical-align: middle;">2fps</td>
+                            <td style="vertical-align: middle;">-</td>
+                            <td style="vertical-align: middle;">2025-1-29</td>
+
+                            <td style="vertical-align: middle;"><b class="">62.8</b></td>
+                            <td style="vertical-align: middle;"><b class="">62.5</b></td>
+                            <td style="vertical-align: middle;">64.1</td>
+                            <td style="vertical-align: middle;">67</td>
+                            <td style="vertical-align: middle;">67.4</td>
+                            <td style="vertical-align: middle;">73.5</td>
+                            <td style="vertical-align: middle;">46.7</td>
+                            <td style="vertical-align: middle;">42.8</td>
+                        </tr>
+
+                        <tr>
+                            <td style="vertical-align: middle;"></td>
+                            <td style="vertical-align: middle;"><b class=""><a
+                                    href="https://huggingface.co/OpenGVLab/InternVL2_5-78B"
+                                    class="ext-link" style="font-size: 16px;">InternVL2.5-78B
+                                <p style="font-size: 12px; margin-left: 5px; color: #858383;">Shanghai AI Lab</p>
+                            </a></b></td>
+                            <td style="vertical-align: middle;">16</td>
+                            <td style="vertical-align: middle;">72B</td>
+                            <td style="vertical-align: middle;">2025-1-24</td>
+
+                            <td style="vertical-align: middle;"><b class="">60.9</b></td>
+                            <td style="vertical-align: middle;"><b class="">61</b></td>
+                            <td style="vertical-align: middle;">65.2</td>
+                            <td style="vertical-align: middle;">64.6</td>
+                            <td style="vertical-align: middle;">55.6</td>
+                            <td style="vertical-align: middle;">75.7</td>
+                            <td style="vertical-align: middle;">46.9</td>
+                            <td style="vertical-align: middle;">33.7</td>
+                        </tr>
+
+                        <tr>
+                            <td style="vertical-align: middle;"></td>
+                            <td style="vertical-align: middle;"><b class=""><a
+                                    href="https://github.com/THUDM/MotionBench"
+                                    class="ext-link" style="font-size: 16px;">TE Fusion
+                                <p style="font-size: 12px; margin-left: 5px; color: #858383;">Z.ai & Tsinghua</p>
+                            </a></b></td>
+                            <td style="vertical-align: middle;">16</td>
+                            <td style="vertical-align: middle;">9B</td>
+                            <td style="vertical-align: middle;">2024-11-25</td>
+
+                            <td style="vertical-align: middle;"><b class="">58</b></td>
+                            <td style="vertical-align: middle;"><b class="">58</b></td>
+                            <td style="vertical-align: middle;">64</td>
+                            <td style="vertical-align: middle;">59</td>
+                            <td style="vertical-align: middle;">51</td>
+                            <td style="vertical-align: middle;">69</td>
+                            <td style="vertical-align: middle;">41</td>
+                            <td style="vertical-align: middle;">39</td>
+                        </tr>
+
+                        <tr>
+                            <td style="vertical-align: middle;"></td>
+                            <td style="vertical-align: middle;"><b class=""><a
+                                    href="https://huggingface.co/Qwen/Qwen2-VL-72B-Instruct"
+                                    class="ext-link" style="font-size: 16px;">Qwen2-VL-72B
+                                <p style="font-size: 12px; margin-left: 5px; color: #858383;">Alibaba</p>
+                            </a></b></td>
+                            <td style="vertical-align: middle;">1fps</td>
+                            <td style="vertical-align: middle;">72B</td>
+                            <td style="vertical-align: middle;">2024-11-25</td>
+
+                            <td style="vertical-align: middle;"><b class="">57</b></td>
+                            <td style="vertical-align: middle;"><b class="">58</b></td>
+                            <td style="vertical-align: middle;">58</td>
+                            <td style="vertical-align: middle;">61</td>
+                            <td style="vertical-align: middle;">63</td>
+                            <td style="vertical-align: middle;">72</td>
+                            <td style="vertical-align: middle;">47</td>
+                            <td style="vertical-align: middle;">31</td>
+                        </tr>
+
+
+                        <tr>
+                            <td style="vertical-align: middle;"></td>
+                            <td style="vertical-align: middle;"><b class=""><a
+                                    href="https://huggingface.co/OpenGVLab/InternVL2-40B"
+                                    class="ext-link" style="font-size: 16px;">InternVL2-40B
+                                <p style="font-size: 12px; margin-left: 5px; color: #858383;">Shanghai AI Lab</p>
+                            </a></b></td>
+                            <td style="vertical-align: middle;">16</td>
+                            <td style="vertical-align: middle;">34B</td>
+                            <td style="vertical-align: middle;">2024-11-25</td>
+
+                            <td style="vertical-align: middle;"><b class="">55</b></td>
+                            <td style="vertical-align: middle;"><b class="">54</b></td>
+                            <td style="vertical-align: middle;">54</td>
+                            <td style="vertical-align: middle;">58</td>
+                            <td style="vertical-align: middle;">49</td>
+                            <td style="vertical-align: middle;">76</td>
+                            <td style="vertical-align: middle;">41</td>
+                            <td style="vertical-align: middle;">30</td>
+                        </tr>
+
+                        <tr>
+                            <td style="vertical-align: middle;"></td>
+                            <td style="vertical-align: middle;"><b class=""><a
+                                    href="https://bigmodel.cn/dev/api#glm-4v"
+                                    class="ext-link" style="font-size: 16px;">GLM-4V-Plus
+                                <p style="font-size: 12px; margin-left: 5px; color: #858383;">Z.ai</p>
+                            </a></b></td>
+                            <td style="vertical-align: middle;">30</td>
+                            <td style="vertical-align: middle;">-</td>
+                            <td style="vertical-align: middle;">2024-11-25</td>
+
+                            <td style="vertical-align: middle;"><b class="">54</b></td>
+                            <td style="vertical-align: middle;"><b class="">55</b></td>
+                            <td style="vertical-align: middle;">57</td>
+                            <td style="vertical-align: middle;">57</td>
+                            <td style="vertical-align: middle;">54</td>
+                            <td style="vertical-align: middle;">69</td>
+                            <td style="vertical-align: middle;">40</td>
+                            <td style="vertical-align: middle;">37</td>
+                        </tr>
+
+                        <tr>
+                            <td style="vertical-align: middle;"></td>
+                            <td style="vertical-align: middle;"><b class=""><a href="https://arxiv.org/abs/2408.01800"
+                                                                               class="ext-link"
+                                                                               style="font-size: 16px;">MiniCPM-V2.6
+                                <p style="font-size: 12px; margin-left: 5px; color: #858383;">Tsinghua</p>
+                            </a></b></td>
+                            <td style="vertical-align: middle;">64</td>
+                            <td style="vertical-align: middle;">7B</td>
+                            <td style="vertical-align: middle;">2024-11-25</td>
+
+
+                            <td style="vertical-align: middle;"><b class="">52</b></td>
+                            <td style="vertical-align: middle;"><b class="">53</b></td>
+                            <td style="vertical-align: middle;">56</td>
+                            <td style="vertical-align: middle;">49</td>
+                            <td style="vertical-align: middle;">45</td>
+                            <td style="vertical-align: middle;">72</td>
+                            <td style="vertical-align: middle;">39</td>
+                            <td style="vertical-align: middle;">33</td>
+                        </tr>
+
+
+                        <tr>
+                            <td style="vertical-align: middle;"></td>
+                            <td style="vertical-align: middle;"><b class=""><a
+                                    href="https://github.com/magic-research/PLLaVA" class="ext-link"
+                                    style="font-size: 16px;">PLLaVA 34B
+                                <p style="font-size: 12px; margin-left: 5px; color: #858383;">Bytedance & NTU</p>
+                            </a></b></td>
+                            <td style="vertical-align: middle;">16</td>
+                            <td style="vertical-align: middle;">34B</td>
+                            <td style="vertical-align: middle;">2024-11-25</td>
+
+
+                            <td style="vertical-align: middle;"><b class="">52</b></td>
+                            <td style="vertical-align: middle;"><b class="">51</b></td>
+                            <td style="vertical-align: middle;">55</td>
+                            <td style="vertical-align: middle;">51</td>
+                            <td style="vertical-align: middle;">47</td>
+                            <td style="vertical-align: middle;">66</td>
+                            <td style="vertical-align: middle;">38</td>
+                            <td style="vertical-align: middle;">31</td>
+                        </tr>
+
+                        <tr>
+                            <td style="vertical-align: middle;"></td>
+                            <td style="vertical-align: middle;"><b class=""><a
+                                    href="https://storage.googleapis.com/deepmind-media/gemini/gemini_v1_5_report.pdf"
+                                    class="ext-link" style="font-size: 16px;">Gemini 1.5 Pro
+                                <p style="font-size: 12px; margin-left: 5px; color: #858383;">Google</p>
+                            </a></b></td>
+                            <td style="vertical-align: middle;">1fps</td>
+                            <td style="vertical-align: middle;">-</td>
+                            <td style="vertical-align: middle;">2024-11-25</td>
+
+                            <td style="vertical-align: middle;"><b class="">51</b></td>
+                            <td style="vertical-align: middle;"><b class="">50</b></td>
+                            <td style="vertical-align: middle;">51</td>
+                            <td style="vertical-align: middle;">52</td>
+                            <td style="vertical-align: middle;">54</td>
+                            <td style="vertical-align: middle;">67</td>
+                            <td style="vertical-align: middle;">40</td>
+                            <td style="vertical-align: middle;">22</td>
+                        </tr>
+
+                        <tr>
+                            <td style="vertical-align: middle;"></td>
+                            <td style="vertical-align: middle;"><b class=""><a
+                                    href="https://github.com/Oryx-mllm/Oryx"
+                                    class="ext-link"
+                                    style="font-size: 16px;">Oryx-34B
+                                <p style="font-size: 12px; margin-left: 5px; color: #858383;">Tsinghua University &
+                                    Tencent & NTU</p>
+                            </a></b></td>
+                            <td style="vertical-align: middle;">64</td>
+                            <td style="vertical-align: middle;">34B</td>
+                            <td style="vertical-align: middle;">2024-11-25</td>
+
+
+                            <td style="vertical-align: middle;"><b class="">49</b></td>
+                            <td style="vertical-align: middle;"><b class="">49</b></td>
+                            <td style="vertical-align: middle;">48</td>
+                            <td style="vertical-align: middle;">52</td>
+                            <td style="vertical-align: middle;">44</td>
+                            <td style="vertical-align: middle;">65</td>
+                            <td style="vertical-align: middle;">42</td>
+                            <td style="vertical-align: middle;">32</td>
+                        </tr>
+
+                        <tr>
+                            <td style="vertical-align: middle;"></td>
+                            <td style="vertical-align: middle;"><b class=""><a
+                                    href="https://llava-vl.github.io/blog/2024-04-30-llava-next-video/"
+                                    class="ext-link"
+                                    style="font-size: 16px;">LLaVA-NeXT-Video-DPO (34B)
+                                <p style="font-size: 12px; margin-left: 5px; color: #858383;">Bytedance & NTU S-Lab</p>
+                            </a></b></td>
+                            <td style="vertical-align: middle;">32</td>
+                            <td style="vertical-align: middle;">34B</td>
+                            <td style="vertical-align: middle;">2024-11-25</td>
+
+
+                            <td style="vertical-align: middle;"><b class="">48</b></td>
+                            <td style="vertical-align: middle;"><b class="">40</b></td>
+                            <td style="vertical-align: middle;">53</td>
+                            <td style="vertical-align: middle;">45</td>
+                            <td style="vertical-align: middle;">36</td>
+                            <td style="vertical-align: middle;">66</td>
+                            <td style="vertical-align: middle;">39</td>
+                            <td style="vertical-align: middle;">23</td>
+                        </tr>
+
+
+                        <tr>
+                            <td style="vertical-align: middle;"></td>
+                            <td style="vertical-align: middle;"><b class=""><a
+                                    href="https://cogvlm2-video.github.io/"
+                                    class="ext-link" style="font-size: 16px;">CogVLM2-Video
+                                <p style="font-size: 12px; margin-left: 5px; color: #858383;">Z.ai</p>
+                            </a></b></td>
+                            <td style="vertical-align: middle;">24</td>
+                            <td style="vertical-align: middle;">8B</td>
+                            <td style="vertical-align: middle;">2024-11-25</td>
+
+                            <td style="vertical-align: middle;"><b class="">41</b></td>
+                            <td style="vertical-align: middle;"><b class="">44</b></td>
+                            <td style="vertical-align: middle;">43</td>
+                            <td style="vertical-align: middle;">39</td>
+                            <td style="vertical-align: middle;">38</td>
+                            <td style="vertical-align: middle;">64</td>
+                            <td style="vertical-align: middle;">37</td>
+                            <td style="vertical-align: middle;">33</td>
+                        </tr>
+
+
+                        </tbody>
+                    </table>
+
+                    <p style="margin-top: -20px;">
+                        <strong style="color: #22a56e; font-size: 18px;">Green date</strong> indicates the newly
+                        added/updated models.
+                    </p>
+
+                    <p style=" text-align: left;">
+
+                    </p>
+
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section class="hero is-light is-small">
+    <div class="hero-body has-text-centered">
+        <h1 class="title is-1 mathvista_other">
+            <span class="mathvista_other" style="vertical-align: middle">MotionBench</span>
+        </h1>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="columns is-centered has-text-centered">
+            <div class="column is-four-fifths" style="width: 100%;">
+
+                <h2 class="title is-3">State-of-the-art video understanding models struggle with basic motion-level perception.</h2>
+                <div class="content has-text-justified">
+                    <div>
+                        <div class="content has-text-centered">
+                            <img src="static/images/motion-bench-cover.png" style="width: 50%;"/>
+                            <p style="margin-bottom: 30px;">Compared to existing benchmarks, our proposed MotionBench focuses on assessing the model’s Motion level perception capability, which is critical in understanding videos with fast and instant interactions and motions.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    </div>
+
+
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="columns is-centered has-text-centered">
+            <div class="column is-four-fifths" style="width: 100%;">
+
+                <h2 class="title is-3">Example</h2>
+                <div class="content has-text-justified">
+                    <div>
+                        <div class="content has-text-centered">
+                            <img src="static/images/example.png" style="width: 100%;"/>
+                            <p style="margin-bottom: 30px;">MotionBench, a collection of manually curated multi-choice queries with video clips featuring dynamic changes from various scenes such as daily life and medical instructions. We devise six primary tasks to evaluate the capability of motion-level perception. Unlike previous story-level and event-level benchmarks, MotionBench is characterized by a significantly higher annotation density, allowing for the assessment of fine-grained motions.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    </div>
+
+
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="columns is-centered has-text-centered">
+            <div class="column is-four-fifths" style="width: 100%;">
+
+                <h2 class="title is-3">The comparison of existing video VLM benchmarks with MotionBench.</h2>
+                <div class="content has-text-justified">
+                    <div>
+                        <div class="content has-text-centered">
+                            <img src="static/images/compare_bench.png" style="width: 100%;"/>
+                            <p style="margin-bottom: 30px;">MotionBench collects various video sources including
+                                web videos and synthetic videos, and provides a new evaluation perspective in motion
+                                level perception.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    </div>
+
+
+    </div>
+</section>
+
+<!--Statistics-->
+<section>
+    <div class="columns is-centered">
+        <div class="column">
+            <div class="content has-text-centered">
+                <h2 class="title is-3" style="margin-top: 30px;">Basic Statistics of MotionBench</h2>
+
+
+                <div class="container-wrapper" style="display: flex; justify-content: center; align-items: center;">
+                    <div id="container"></div>
+                    <div id="image-container" style="margin-right: 20px;">
+                        <img src="static/images/statistics.png" alt="data-composition"
+                             style="max-width: 90%; display: inline-block;"/>
+                    </div>
+
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<section class="hero is-light is-small">
+    <div class="hero-body has-text-centered">
+        <h1 class="title is-1 mathvista_other">
+            <span class="mathvista_other" style="vertical-align: middle">Through-Encoder Fusion</span>
+        </h1>
+        <p>We propose Through-Encoder(TE) Fusion, a novel compression architecture to enhance motion-level understanding under constrained LLM context length.
+            Experimental results demonstrate that TE Fusion achieves state-of-the-art results on MotionBench and outperforms other compression methods across MotionBench,
+            MVBench, LVBench, and VideoMME in the ablation study, and shows a particular advantage in high compression ratio scenarios. </p>
+    </div>
+</section>
+
+
+<section class="section">
+    <div class="container">
+        <div class="columns is-centered has-text-centered">
+            <div class="column is-four-fifths" style="width: 100%;">
+
+                <h2 class="title is-3">Model Architecture of Video Understanding Models</h2>
+                <div class="content has-text-justified">
+                    <div>
+                        <div class="content has-text-centered">
+                            <img src="static/images/model.png" style="width: 100%;"/>
+                            <p style="margin-bottom: 30px;">MotionBench collects various video sources including
+                                web videos and synthetic videos, and provides a new evaluation perspective in motion
+                                level perception.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    </div>
+
+
+    </div>
+</section>
+
+<!--Experiments-->
+<section class="hero is-light is-small">
+    <div class="hero-body has-text-centered">
+        <h1 class="title is-1 mathvista_other">Experimental Results</h1>
+    </div>
+</section>
+
+
+
+<section class="section">
+    <div class="container">
+        <div class="columns is-centered has-text-centered">
+            <div class="column is-four-fifths" style="width: 100%;">
+
+                <h2 class="title is-3">Evaluation results of the existing video VLMs.</h2>
+                <div class="content has-text-justified">
+                    <div>
+                        <div class="content has-text-centered">
+                            <img src="static/images/all_results.png" style="width: 100%;"/>
+                            <p style="margin-bottom: 30px;">Abbreviations: MR (Motion Recognition), LM (Location-related Motion), CM
+(Camera Motion), MO (Motion-related Objects), AO (Action Order), RC (Repetition Count). We randomly split MotionBench into “dev”
+and “test”. We will release the ground truth answers in the “dev” set and set up an online platform for results submission in the “test” set.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    </div>
+
+
+    </div>
+</section>
+
+
+
+<section class="section">
+    <div class="container">
+        <div class="columns is-centered has-text-centered">
+            <div class="column is-four-fifths" style="width: 100%;">
+
+                <h2 class="title is-3">Evaluation results on Different Benchmarks.</h2>
+                <div class="content has-text-justified">
+                    <div>
+                        <div class="content has-text-centered">
+                            <img src="static/images/results_on_bens.png" style="width: 100%;"/>
+                            <p style="margin-bottom: 30px;">Model performance variation with respect to different compression ratios k = 2, 4, 8, 16, given a fixed VLM input frame count
+of N_{input} = 16. The pink dotted line represents the performance of the baseline model, which processes 16 frames without temporal
+compression. Note that each compression method is re-implemented on the GLM-4V-9B backbone to ensure a fair comparison.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    </div>
+
+
+    </div>
+</section>
+
+
+
+
+<section class="section">
+    <div class="container">
+        <div class="columns is-centered has-text-centered">
+            <div class="column is-four-fifths" style="width: 100%;">
+
+                <h2 class="title is-3">Evaluation results on Different Benchmarks.</h2>
+                <div class="content has-text-justified">
+                    <div>
+                        <div class="content has-text-centered">
+                            <img src="static/images/table_results.png" style="width: 50%;"/>
+                            <p style="margin-bottom: 30px;">Benchmark results for different compression methods at various compression rates, all using the same sequence length in the VLM decoder.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    </div>
+
+
+    </div>
+</section>
+
+<section class="hero is-light is-small">
+    <div class="hero-body has-text-centered">
+        <h1 class="title is-1 mathvista_other" id="citation">Citation</h1>
+    </div>
+</section>
+
+
+<section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+    <pre><code>@misc{hong2025motionbenchbenchmarkingimprovingfinegrained,
+      title={MotionBench: Benchmarking and Improving Fine-grained Video Motion Understanding for Vision Language Models},
+      author={Wenyi Hong and Yean Cheng and Zhuoyi Yang and Weihan Wang and Lefan Wang and Xiaotao Gu and Shiyu Huang and Yuxiao Dong and Jie Tang},
+      year={2025},
+      eprint={2501.02955},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2501.02955},
+}
+</code></pre>
+    </div>
+</section>
+
+<footer class="footer">
+    <!-- <div class="container"> -->
+    <div class="content has-text-centered">
+    </div>
+    <div class="columns is-centered">
+        <div class="column is-8">
+            <div class="content">
+                <p style="text-align: center;">
+                    This website is adapted from <a href="https://lvbench.github.io/">LVBench</a>, licensed under a
+                    <a rel="license"
+                       href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+                        Commons Attribution-ShareAlike 4.0 International License</a>.
+                </p>
+            </div>
+        </div>
+    </div>
+    <!-- </div> -->
+</footer>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        updateRowNumbers();
+        document.querySelector("#results").addEventListener("click", updateRowNumbers);
+    });
+
+    function updateRowNumbers() {
+        const rows = document.querySelectorAll("#results tbody tr");
+        rows.forEach((row, index) => {
+            row.querySelector("td").innerText = index + 1;
+        });
+    }
+</script>
+
+</body>
+</html>
+
