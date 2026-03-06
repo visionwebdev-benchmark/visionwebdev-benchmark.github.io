@@ -103,7 +103,7 @@
             color: var(--vwd-text-secondary);
             text-decoration: none;
             border-bottom: 2px solid transparent;
-            transition: all 0.2s ease;
+            transition: all 0s ease;
             cursor: pointer;
             background: none;
             border-top: none;
@@ -648,11 +648,11 @@
     <div class="nav-container">
         <div class="nav-logo">
             <img src="static/images/visionwebdev.png" alt="Logo"/>
-            <span class="nav-logo-text">Overview</span>
+            <span class="nav-logo-text">VisionWebDev</span>
         </div>
         
         <div class="nav-tabs">
-            <button class="nav-tab active" data-tab="home">VisionWebDev</button>
+            <button class="nav-tab active" data-tab="home">Overview</button>
             <button class="nav-tab" data-tab="leaderboard">Leaderboard</button>
             <button class="nav-tab" data-tab="submit">Submit</button>
             <button class="nav-tab" data-tab="citation">Citation</button>
@@ -684,14 +684,10 @@
                     <div class="column has-text-centered">
                         <h1 class="title is-1 publication-title is-bold">
                             <img src="static/images/visionwebdev.png" style="width:1.2em;vertical-align: middle" alt="Logo"/>
-                            <span class="video-mme" style="vertical-align: middle">&nbsp;VisionWebDev</span>
+                            <span class="video-mme" style="vertical-align: middle">&nbsp;VisionWebDev: A Hierarchical Benchmark for Visual Website Development with Agent Verification</span>
                         </h1>
-                        <h2 class="subtitle is-3 publication-subtitle" style="margin-bottom: 20px;">
-                            A Hierarchical Benchmark for Visual Website Development with Agent Verification
-                        </h2>
-
-                        <div class="is-size-5 publication-authors" style="width: 80%; margin: 20px auto;">
-                            <span class="author-block" style="font-size:18px">
+                        <div class="is-size-5 publication-authors" style="width: 80%; margin: 18px auto 10px auto;">
+                            <span class="author-block" style="font-size:22px">
                                 <a href="https://github.com/THUDM">VisionWebDev Team</a>
                             </span>
                         </div>
@@ -701,125 +697,20 @@
         </div>
     </section>
 
-    <section class="section">
-        <div class="container" style="margin-bottom: 2vh;">
-            <div class="columns is-centered has-text-centered">
+    <section class="section" style="padding-top: 1rem;">
+        <div class="container">
+            <div class="columns is-centered">
                 <div class="column is-four-fifths">
-                    <h2 class="title is-3">Introduction</h2>
+                    <h2 class="title is-3 has-text-centered">What is VisionWebDev</h2>
                     <div class="content has-text-justified">
                         <p>
-                        Recent advances in large language models have improved the capabilities of coding agents, yet systematic evaluation of complex, end-to-end website development remains limited. Prominent benchmarks such as SWE-Bench focus on incremental, issue-driven edits, failing to evaluate holistic end-to-end engineering. Although recent text-only benchmarks explore full development scenarios, multimodal evaluation remains largely confined to static webpage reproduction. Moreover, assessing complex interactions and long-horizon outcomes is still difficult due to underspecified tasks and weak verification protocols. To address these gaps, we introduce <b>VisionWebDev</b>, a hierarchical benchmark that enables autonomous evaluation of multimodal coding agents on visual website development via agent verification. As a task formulation, website development naturally spans the full software lifecycle and requires coordinated understanding of visual prototypes, textual requirements, and codebases, making it an ideal testbed for evaluating long-horizon multimodal agent intelligence. The benchmark is constructed from real-world websites through a rigorous multi-stage pipeline and comprises <b>193 tasks across 16 categories</b>, with <b>918 prototype images</b> and <b>1,256 test cases</b>. To support flexible, thorough and reliable evaluation, we propose a workflow-based agent verification paradigm combining GUI agent verifiers with VLM-based judges. Our evaluation reveals substantial performance gaps at all task levels, with state-of-the-art models still struggling on full-stack development.
+                            <b>VisionWebDev</b> is a benchmark for evaluating whether multimodal coding agents can build real websites from visual prototypes and structured requirements. It goes beyond small code edits and static UI generation to measure end-to-end web development ability in realistic settings.
                         </p>
-                    </div>
-
-                    <div class="content has-text-centered" style="margin-top: 50px;">
-                        <img src="static/images/visionwebdev-cover.png" style="width: 85%; max-width: 1000px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);"/>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="hero is-light is-small">
-        <div class="hero-body has-text-centered">
-            <h1 class="title is-1 mathvista_other">
-                <span style="vertical-align: middle">Benchmark Overview</span>
-            </h1>
-        </div>
-    </section>
-
-    <section class="section">
-        <div class="container">
-            <div class="columns is-centered has-text-centered">
-                <div class="column is-four-fifths" style="width: 100%;">
-                    <h2 class="title is-3">Comparison with Existing Benchmarks</h2>
-                    <div class="content has-text-justified">
-                        <div class="content has-text-centered">
-                            <img src="static/images/compare_bench.png" style="width: 70%; max-width: 1000px; border-radius: 10px; box-shadow: 0 2px 12px rgba(0,0,0,0.06);"/>
-                        </div>
-                        <p style="margin-top: 16px;">
-                        VisionWebDev addresses key limitations of existing benchmarks. Unlike SWE-Bench which focuses on incremental
-                        code edits, or Design2Code which is limited to static UI reproduction, VisionWebDev provides comprehensive
-                        evaluation spanning the full software development lifecycle with multimodal inputs, hierarchical task formulation,
-                        and rigorous automated verification.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section">
-        <div class="container">
-            <div class="columns is-centered has-text-centered">
-                <div class="column is-four-fifths" style="width: 100%;">
-                    <h2 class="title is-3">Hierarchical Task Formulation</h2>
-                    <div class="content has-text-justified">
                         <p>
-                        Visual website development encompasses a range of capabilities, from interpreting UI prototypes to managing
-                        interaction-driven application states and page transitions. To systematically evaluate these competencies,
-                        VisionWebDev formalizes coding tasks via a three-level hierarchical framework:
+                            Each task provides multimodal inputs such as UI prototype images, requirement descriptions, and development assets. Agents are expected to generate executable websites that satisfy both functional behavior and visual fidelity.
                         </p>
-
-                        <ul class="custom-list">
-                            <li><b>Level 1: Static Webpage</b> — Evaluates models' ability to interpret UIs and generate executable code
-                            in a device-responsive setting. Each task provides prototype images across desktop, tablet, and mobile views.</li>
-                            <li><b>Level 2: Interactive Frontend</b> — Inputs include multiple prototype images and text describing
-                            inter-page logical relationships. Models must generate fully interactive multi-page frontends with coherent
-                            navigation flows.</li>
-                            <li><b>Level 3: Full-Stack Website</b> — Simulates realistic engineering scenarios with structured requirement
-                            documents alongside prototype images. Agents must interpret requirements, manage complex application states,
-                            and deliver cohesive full-stack systems.</li>
-                        </ul>
-                        
-                        <div class="content has-text-centered" style="margin: 20px 0;">
-                            <img src="static/images/input_materials.png" style="width: 45%; max-width: 700px; border-radius: 10px; box-shadow: 0 2px 12px rgba(0,0,0,0.06);"/>
-                        </div>
-
-                        <p style="margin-top: 16px;">
-                        All tasks include comprehensive multimodal input materials: high-fidelity UI prototypes across multiple devices,
-                        textual requirement specifications detailing functionality and interactions, and a multimedia resource library
-                        with images, icons, videos and fonts to simulate realistic development environments.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section">
-        <div class="container">
-            <div class="columns is-centered has-text-centered">
-                <div class="column is-full">
-                    <h2 class="title is-3">Benchmark Statistics</h2>
-
-                    <div class="stats-container-left-right">
-                        <div class="stats-left">
-                            <div class="stats-item-box">
-                                <h3 class="title is-5">Task Distribution by Category</h3>
-                                <img src="static/images/task_distribution.png" alt="task-distribution"/>
-                            </div>
-                        </div>
-
-                        <div class="stats-right">
-                            <div class="stats-item-box">
-                                <h3 class="title is-5">Test Case Distribution</h3>
-                                <img src="static/images/test_case_distribution.png" alt="test-case-distribution"/>
-                            </div>
-                            <div class="stats-item-box">
-                                <h3 class="title is-5">Task Complexity Progression</h3>
-                                <img src="static/images/compare_task.png" alt="compare-task" style="width: 75%; max-width: 900px;"/>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="content has-text-justified" style="max-width: 850px; margin: 24px auto;">
                         <p>
-                        VisionWebDev comprises 193 tasks spanning 16 subcategories across 4 major domains, ensuring diverse coverage
-                        of real-world web applications. Task complexity increases progressively across three levels: 100 static webpage
-                        tasks (averaging 3 prototypes per task), 66 interactive frontend tasks (5.9 prototypes and 7.5 test cases),
-                        and 27 full-stack website tasks (8.5 prototypes and 28.2 test cases). The benchmark includes 1,256 test cases
-                        distributed across levels for comprehensive functional verification.
+                            To support reliable evaluation, VisionWebDev introduces an automated verification framework that combines workflow-driven GUI testing with VLM-based visual judging.
                         </p>
                     </div>
                 </div>
@@ -827,45 +718,71 @@
         </div>
     </section>
 
-    <section class="hero is-light is-small">
-        <div class="hero-body has-text-centered">
-            <h1 class="title is-1 mathvista_other">Workflow-Based Agent Verification</h1>
-        </div>
-    </section>
-
-    <section class="section">
+    <section class="section" style="padding-top: 0.5rem;">
         <div class="container">
             <div class="columns is-centered has-text-centered">
                 <div class="column is-four-fifths">
+                    <div class="content has-text-centered" style="margin-top: 10px;">
+                        <img src="static/images/visionwebdev_cover.png" style="width: 75%; max-width: 1000px;" alt="VisionWebDev Cover"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="padding-top: 0.5rem;">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column is-four-fifths">
+                    <h2 class="title is-3 has-text-centered">Why VisionWebDev</h2>
                     <div class="content has-text-justified">
                         <p>
-                        End-to-end website evaluation presents significant challenges for both functional and visual testing.
-                        To address these challenges, VisionWebDev adopts a workflow-based agent verification paradigm that preserves
-                        the flexibility of agent-based interaction while constraining execution through structured test workflows
-                        to achieve reproducibility.
+                            Existing coding benchmarks mainly focus on localized code edits, while most multimodal website benchmarks are limited to static webpage reproduction. These settings do not fully capture the complexity of modern web development, where agents must reason over visual layouts, interaction flows, application state, and system behavior across multiple pages.
                         </p>
-
-                        <h3 class="title is-4" style="margin-top: 28px;">Test Workflow Design</h3>
                         <p>
-                        VisionWebDev formalizes end-to-end testing as a directed dependency graph, where each node represents a
-                        self-contained verification sub-procedure and edges encode sequential dependencies. Test workflows are
-                        constructed following two principled guidelines: (1) Decoupling dependent test nodes to mitigate error
-                        propagation along long interaction chains, and (2) Integrating related test nodes operating within the
-                        same application context to reduce redundant setup while enabling coherent verification.
+                            VisionWebDev closes this gap by evaluating the full spectrum of visual website development, from responsive UI implementation to interactive frontend engineering and complete full-stack applications.
                         </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                        <h3 class="title is-4" style="margin-top: 28px;">Verification Node Types</h3>
+    <section class="section" style="padding-top: 0.5rem; padding-bottom: 1rem;">
+        <div class="container">
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-four-fifths">
+                    <h2 class="title is-3">Benchmark Highlights</h2>
+                    <div class="columns is-multiline" style="margin-top: 10px;">
+                        <div class="column is-3-desktop is-6-tablet">
+                            <div style="padding: 20px; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); height: 100%;">
+                                <h3 class="title is-2" style="margin-bottom: 8px;">193</h3>
+                                <p style="margin: 0;">Tasks</p>
+                            </div>
+                        </div>
+                        <div class="column is-3-desktop is-6-tablet">
+                            <div style="padding: 20px; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); height: 100%;">
+                                <h3 class="title is-2" style="margin-bottom: 8px;">918</h3>
+                                <p style="margin: 0;">Prototype Images</p>
+                            </div>
+                        </div>
+                        <div class="column is-3-desktop is-6-tablet">
+                            <div style="padding: 20px; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); height: 100%;">
+                                <h3 class="title is-2" style="margin-bottom: 8px;">1,255</h3>
+                                <p style="margin: 0;">Test Cases</p>
+                            </div>
+                        </div>
+                        <div class="column is-3-desktop is-6-tablet">
+                            <div style="padding: 20px; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); height: 100%;">
+                                <h3 class="title is-2" style="margin-bottom: 8px;">16</h3>
+                                <p style="margin: 0;">Categories</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content has-text-justified">
                         <p>
-                        VisionWebDev explicitly categorizes verification nodes into two complementary types:
+                            VisionWebDev spans 16 subcategories across 4 major domains and covers progressively harder development settings, from static responsive webpages to interaction-heavy frontends and requirement-driven full-stack systems.
                         </p>
-                        <ul class="custom-list">
-                            <li><b>Functional Verification Nodes (GUI Agent Verifier)</b> — Assess functional correctness and
-                            interaction fidelity, reported as Functional Score (FS). Each node is formalized as a 3-tuple
-                            specifying testing objective, guided actions that constrain agent interactions, and validation criteria.</li>
-                            <li><b>Visual Verification Nodes (VLM Judge)</b> — Assess visual fidelity by comparing rendered pages
-                            against reference prototypes, reported as Visual Score (VS). A dedicated VLM judge performs
-                            component-level comparisons, assigning fidelity scores according to predefined visual rubrics.</li>
-                        </ul>
                     </div>
                 </div>
             </div>
@@ -969,73 +886,104 @@
                         <div class="submit-step-content">
                             <h3>Clone and Setup VisionWebDev</h3>
                             <p>First, clone the VisionWebDev repository and install the required dependencies:</p>
-                            <div class="code-block">
-git clone https://github.com/VisionWebDev/VisionWebDev.git
+                            <pre class="code-block">
+git clone https://github.com/VisionWebDev/VisionWebDev.git 
 cd VisionWebDev
-pip install -r requirements.txt</div>
+pip install -e .</pre>
                         </div>
                     </div>
 
                     <div class="submit-step">
                         <div class="submit-step-number">2</div>
                         <div class="submit-step-content">
-                            <h3>Run Evaluation</h3>
-                            <p>Run the evaluation script with your model configuration:</p>
-                            <div class="code-block">
-python run_evaluation.py \
-    --model your_model_name \
-    --framework openhands \
-    --output_dir results/</div>
+                            <h3>Run Inference & Evaluation</h3>
+                            <p>Run the inference & evaluation script with your model configuration</p>
                         </div>
                     </div>
 
                     <div class="submit-step">
-                        <div class="submit-step-number">3</div>
+
+                    <div class="submit-step-number">3</div>
                         <div class="submit-step-content">
                             <h3>Prepare Submission</h3>
-                            <p>Ensure your results include the following information:</p>
+                            <p>Before submitting, organize your evaluation results using the following directory structure:</p>
+
+                            <pre class="code-block">
+agent/
+    model/
+        metadata.json
+        task/
+            project/
+                test_results/</pre>
+
+                            <p style="margin-top:10px;">Requirements:</p>
                             <ul style="color: var(--vwd-text-secondary); margin-top: 8px; padding-left: 18px;">
-                                <li>Model name and organization</li>
-                                <li>Model parameters (or "-" for API models)</li>
-                                <li>Framework used (OpenHands, Claude Code, or custom)</li>
-                                <li>Visual and functional scores for each level</li>
-                                <li>Evaluation date</li>
+                                <li><strong>test_results/</strong> must contain the full evaluation artifacts generated by the official <code>evaluate</code> script, including the complete GUI Agent execution traces and VLM Judge evaluation outputs.</li>
+                                <li>The submission should include <strong>evaluation results only</strong>. Please do <strong>not</strong> include any source code or model weights.</li>
+                                <li>Create a <code>metadata.json</code> file under <code>agent/model/</code> that summarizes the final benchmark results for leaderboard submission.</li>
                             </ul>
+
+                            <p style="margin-top:10px;">Required <code>metadata.json</code> format:</p>
+
+                            <pre class="code-block">
+{
+  "name": "model-name + agent-framework",
+  "org": "organization-name",
+  "date": "YYYY-MM-DD",
+  "webpage": {
+    "desktop": score,
+    "tablet": score,
+    "mobile": score,
+    "avg": average-score
+  },
+  "frontend": {
+    "vs": visual-score,
+    "fs": functional-score,
+    "avg": average-score
+  },
+  "website": {
+    "vs": visual-score,
+    "fs": functional-score,
+    "avg": average-score
+  },
+  "overall": overall-score
+}
+</pre>
+<p style="color: var(--vwd-text-secondary); margin-top: 6px;">
+  All scores should be scaled to <strong>0–100</strong> and rounded to <strong>one decimal place</strong>.
+</p>
                         </div>
                     </div>
 
                     <div class="submit-step">
                         <div class="submit-step-number">4</div>
                         <div class="submit-step-content">
-                            <h3>Submit via Pull Request</h3>
-                            <p>Update the <code>data/leaderboard.json</code> file with your results and submit a pull request to our GitHub repository. Alternatively, you can open an issue with your results attached.</p>
-                            <div class="code-block">
-{
-  "name": "Your-Model + Framework",
-  "org": "Your Organization",
-  "params": "-",
-  "date": "2026-03-05",
-  "url": "https://your-model-url.com",
-  "l1": {"desktop": 0.0, "tablet": 0.0, "mobile": 0.0, "avg": 0.0},
-  "l2": {"vs": 0.0, "fs": 0.0, "avg": 0.0},
-  "l3": {"vs": 0.0, "fs": 0.0, "avg": 0.0},
-  "overall": 0.0
-}</div>
+                            <h3>Submit via Hugging Face Pull Request</h3>
+
+                            <p>
+                                Fork the VisionWebDev leaderboard repository on Hugging Face and submit your results via a Pull Request.
+                            </p>
+
+                            <ul style="color: var(--vwd-text-secondary); margin-top: 8px; padding-left: 18px;">
+                                <li>Fork the dataset repository on Hugging Face.</li>
+                                <li>Add your submission under the required directory structure (<code>agent/model/...</code>).</li>
+                                <li>Ensure the <code>metadata.json</code> file correctly summarizes your evaluation results.</li>
+                                <li>Submit a Pull Request to the main dataset repository.</li>
+                            </ul>
                         </div>
                     </div>
-
                     <div class="submit-step">
                         <div class="submit-step-number">5</div>
                         <div class="submit-step-content">
                             <h3>Review Process</h3>
-                            <p>Our team will review your submission for correctness and consistency. Once approved, your results will appear on the public leaderboard. Please allow 1-2 weeks for the review process.</p>
+                            <p>Our team will review your submission for correctness and consistency. Once approved, your results will appear on the public leaderboard.</p>
                         </div>
                     </div>
 
                     <div class="info-box">
                         <strong>Questions?</strong>
                         <p style="color: var(--vwd-text-secondary); margin-top: 8px;">
-                            If you have any questions about the submission process, please open an issue on our 
+                            If you have any question about the evaluation and submission process, please open an issue on our 
                             <a href="https://github.com/VisionWebDev/VisionWebDev/issues" target="_blank" style="color: var(--vwd-primary); font-weight: 500;">GitHub Issues page</a>.
                         </p>
                     </div>
@@ -1072,24 +1020,6 @@ python run_evaluation.py \
   journal={arXiv preprint},
   year={2026}
 }</code></pre>
-                    </div>
-
-                    <div style="margin-top: 36px;">
-                        <h3 style="font-size: 18px; margin-bottom: 12px; color: var(--vwd-text-primary);">Links</h3>
-                        <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-                            <a href="#" class="nav-btn nav-btn-outline">
-                                <span class="icon"><i class="ai ai-arxiv"></i></span>
-                                arXiv Paper
-                            </a>
-                            <a href="https://github.com/VisionWebDev/VisionWebDev" target="_blank" class="nav-btn nav-btn-outline">
-                                <span class="icon"><i class="fab fa-github"></i></span>
-                                GitHub Repository
-                            </a>
-                            <a href="#" class="nav-btn nav-btn-outline">
-                                <span class="icon" style="display: inline-flex; align-items: center;"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M12.5 0a3.5 3.5 0 0 0-3.4 2.7H6.9a3.5 3.5 0 1 0 0 1.6h2.2a3.5 3.5 0 1 0 3.4-4.3zM4 3.5a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0zm8.5 0a1.5 1.5 0 1 0 3 0 1.5 1.5 0 0 0-3 0zM8 6a4 4 0 0 0-4 4v2a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2v-2a4 4 0 0 0-4-4z"/></svg></span>
-                                Dataset
-                            </a>
-                        </div>
                     </div>
 
                     <div style="margin-top: 36px;">
